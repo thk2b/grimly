@@ -6,19 +6,19 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:32:03 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 11:55:14 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 13:24:26 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grimly.h"
 #include "point.h"
-#include "priority_queue.h"
+#include "queue.h"
 #include "libft.h"
 
 t_point		bfs(t_tile_map *tile_map, t_value_map *dst_map,
 	t_point *entrance, t_sym sym)
 {
-	t_pq	*pq;
+	t_queue	*q;
 	t_point	*cur;
 	t_point	*dup;
 	t_point	next = {0, 0};
@@ -26,9 +26,9 @@ t_point		bfs(t_tile_map *tile_map, t_value_map *dst_map,
 
 	if (value_map_new(dst_map, &tile_map->size))
 		return ((t_point){-1, -1});
-	if (pq_add(&pq, (void*)entrance, 0, 0))
+	if (queue_add(&q, (void*)entrance))
 		return ((t_point){-1, -1});
-	while ((cur = pq_pop(&pq, NULL)))
+	while ((cur = queue_pop(q)))
 	{
 		while (pt_neighbors(&next, cur, &tile_map->size))
 		{
@@ -39,13 +39,14 @@ t_point		bfs(t_tile_map *tile_map, t_value_map *dst_map,
 				continue ;
 			else if (next_tile == sym[SYM_EXIT])
 			{
-				pq_free(pq, NULL);
+				queue_free(q, NULL);
+				free(q);
 				free(cur);
 				return (next);
 			}
 			dst_map->value[PT_AT(next)] = dst_map->value[PTP_AT(cur)] + 1;
 			MCK(dup = pt_dup(next), ((t_point){-1, -1}));
-			if (pq_add(&pq, (void*)dup, 0, 0))
+			if (queue_add(&q, (void*)dup))
 				return ((t_point){-1, -1});
 		}
 		free(cur);
