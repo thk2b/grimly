@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 23:06:10 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/22 23:50:37 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 11:15:27 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ int	pq_add(t_pq **pq, void *data, int value, t_pq_sort sort_type)
 	el->next = cur;
 	if (cur == *pq)
 		*pq = el;
-	return (1);
+	return (0);
 }
