@@ -10,9 +10,11 @@ SRCS = \
 	parse_metadata.c\
 	tile_map_free.c\
 	read_tile_map.c\
+	print_tile_map.c\
 	value_map.c\
 	point.c\
 	bfs.c\
+	render_path.c\
 	grimly.c\
 	main.c
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 11:55:01 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 15:01:04 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ int	grimly(int fd)
 		return (1);
 	if ((exit = bfs(&tile_map, &dst_map, entrance, sym)).x < 0)
 		return (1);
-	render_value_map(&dst_map);
-	// return (render_path(&tile_map, &dst_map, &exit, sym));
+	render_path(&tile_map, &dst_map, &exit, sym);
 	tile_map_free(&tile_map);
-	while (1);
 	value_map_free(&dst_map);
 	return (0);
 }

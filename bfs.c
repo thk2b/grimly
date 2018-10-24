@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:32:03 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 13:24:26 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 14:30:40 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_point		bfs(t_tile_map *tile_map, t_value_map *dst_map,
 				queue_free(q, NULL);
 				free(q);
 				free(cur);
+				pt_neighbors(NULL, NULL, NULL);
 				return (next);
 			}
 			dst_map->value[PT_AT(next)] = dst_map->value[PTP_AT(cur)] + 1;
