@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 18:56:54 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 21:32:13 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 21:52:22 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ static char	**read_rows(int fd, t_point *size, t_point *entrance, t_sym sym)
 		if ((get_next_line(fd, rows + y)) != 1)
 			return free_rows(rows, y);
 		else if (validate_row(rows[y], size->x, sym))
-			return free_rows(rows, y);
+			return free_rows(rows, y + 1);
 		else if(find_entrance(y, rows[y], entrance, sym))
-			return free_rows(rows, y);
+			return free_rows(rows, y + 1);
 		else
 			y++;
 	if (y != size->y)
@@ -89,7 +89,10 @@ t_point	read_tile_map(int fd, t_tile_map *tm, t_sym sym)
 	if (get_next_line(fd, &line) != 1)
 		return ((t_point){-1, -1});
 	if (parse_metadata(line, &tm->size, sym))
+	{
+		free(line);
 		return ((t_point){-1, -1});
+	}
 	free(line);
 	if ((tm->tile = read_rows(fd, &tm->size, &entrance, sym)) == NULL)
 		return ((t_point){-1, -1});

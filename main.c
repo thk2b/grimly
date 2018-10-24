@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 10:57:25 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 21:32:21 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 21:33:37 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int			main(int ac, char **av)
 				error();
 			else if (grimly(fd))
 				error();
+	while(1);
 	return (0);
 }

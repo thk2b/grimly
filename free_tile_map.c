@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 21:22:17 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 21:29:51 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 21:35:56 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	free_tile_map(t_tile_map *tm)
 	y = 0;
 	while (y < tm->size.y && tm->tile[y])
 		free(tm->tile[y++]);
-	free(tm);
+	free(tm->tile);
 }
