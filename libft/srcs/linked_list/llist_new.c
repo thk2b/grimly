@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   llist_new.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/22 10:57:25 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 19:33:46 by tkobb            ###   ########.fr       */
+/*   Created: 2018/10/21 22:22:44 by tkobb             #+#    #+#             */
+/*   Updated: 2018/10/22 00:49:38 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grimly.h"
+#include "linked_list.h"
 #include "libft.h"
-#include <fcntl.h>
+#include <stdlib.h>
 
-static void	error(void)
+t_llist			*llist_new(void)
 {
-	ft_putendl("MAP ERROR");
+	t_llist	*head;
+
+	MCK(head = (t_llist*)malloc(sizeof(t_llist)), NULL);
+	head->first = NULL;
+	head->last = NULL;
+	head->len = 0;
+	return (head);
 }
 
-int			main(int ac, char **av)
+t_llist_node	*llist_new_node(void *data)
 {
-	int	i;
-	int	fd;
+	t_llist_node *node;
 
-	i = 1;
-	if (ac == 1 && grimly(0))
-		error();
-	else
-		while (av[i])
-			if ((fd = open(av[i++], O_RDONLY)) == -1)
-				error();
-			else if (grimly(fd))
-				error();
-	return (0);
+	MCK(node = (t_llist_node*)malloc(sizeof(t_llist_node)), NULL);
+	node->data = data;
+	node->next = NULL;
+	return (node);
 }

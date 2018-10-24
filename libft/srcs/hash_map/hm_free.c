@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grimly.c                                           :+:      :+:    :+:   */
+/*   hm_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 20:46:15 by tkobb            ###   ########.fr       */
+/*   Created: 2018/10/21 21:19:04 by tkobb             #+#    #+#             */
+/*   Updated: 2018/10/21 21:20:15 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grimly.h"
+#include "hash_map.h"
 
-int	grimly(int fd)
+void	*hm_free(t_hm *hm)
 {
-	// t_point		exit;
-	t_point		entrance;
-	t_tile_map	tile_map;
-	// t_value_map	dst_map;
-	t_sym		sym;
-
-	if ((entrance = read_tile_map(fd, &tile_map, sym)).x < 0)
-		return (1);
-	// if ((exit = bfs(&tile_map, &dst_map, &entrance, &sym)).x < 0)
-	// 	return (1);
-	// return (render_path(&tile_map, &dst_map, &exit, sym));
-	return (0);
+	free(hm->keys);
+	free(hm);
+	return (NULL);
 }

@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grimly.c                                           :+:      :+:    :+:   */
+/*   llist_shift.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 20:46:15 by tkobb            ###   ########.fr       */
+/*   Created: 2018/10/21 22:38:20 by tkobb             #+#    #+#             */
+/*   Updated: 2018/10/22 00:49:17 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grimly.h"
+#include "linked_list.h"
+#include "libft.h"
 
-int	grimly(int fd)
+int		llist_shift(t_llist **head, void *data)
 {
-	// t_point		exit;
-	t_point		entrance;
-	t_tile_map	tile_map;
-	// t_value_map	dst_map;
-	t_sym		sym;
+	t_llist_node	*node;
 
-	if ((entrance = read_tile_map(fd, &tile_map, sym)).x < 0)
-		return (1);
-	// if ((exit = bfs(&tile_map, &dst_map, &entrance, &sym)).x < 0)
-	// 	return (1);
-	// return (render_path(&tile_map, &dst_map, &exit, sym));
+	MCK(node = llist_new_node(data), 1);
+	if (*head == NULL)
+	{
+		MCK(*head = llist_new(), 1);
+		(*head)->first = node;
+	}
+	else
+		node->next = (*head)->first;
+	(*head)->first = node;
+	(*head)->len++;
 	return (0);
 }

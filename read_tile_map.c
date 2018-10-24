@@ -1,0 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_tile_map.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/23 18:56:54 by tkobb             #+#    #+#             */
+/*   Updated: 2018/10/23 21:03:55 by tkobb            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "grimly.h"
+#include "parse.h"
+#include "get_next_line.h"
+#include "libft.h"
+
+static int	validate_row(char *row, int width, t_sym sym)
+{
+	int	i;
+
+	i = 0;
+	while (row[i])
+		if (ft_memchr((void*)sym, row[i++], 5) == NULL)
+			return (1);
+	if (i != width)
+		return (1);
+	return (0);
+}
+
+static int	find_entrance(int y, char *row, t_point *entrance, t_sym sym)
+{
+	int x;
+
+	x = 0;
+	while (row[x])
+	{
+		if (row[x] == sym[SYM_ENTRANCE])
+		{
+			if (entrance->x != -1)
+				return (1);
+			entrance->x = x;
+			entrance->y = y;
+		}
+		x++;
+	}
+	return (0);
+}
+
+static char	**read_rows(int fd, t_point *size, t_point *entrance, t_sym sym)
+{
+	int		y;
+	char	**rows;
+
+	MCK(rows = (char**)malloc(sizeof(char*) * size->y), NULL);
+	y = 0;
+	while (y < size->y)
+		if ((get_next_line(fd, rows + y)) != 1)
+			return (NULL);
+		else if (validate_row(rows[y], size->x, sym))
+			return (NULL);
+		else if(find_entrance(y, rows[y], entrance, sym))
+			return (NULL);
+		else
+			y++;
+	if (y != size->y)
+		return (NULL);
+	if (entrance->x < 0)
+		return (NULL);
+	return (rows);
+}
+
+t_point	read_tile_map(int fd, t_tile_map *tm, t_sym sym)
+{
+	char	*line;
+	t_point	entrance = {-1, -1};
+
+	if (get_next_line(fd, &line) != 1)
+		return ((t_point){-1, -1});
+	if (parse_metadata(line, &tm->size, sym))
+		return ((t_point){-1, -1});
+	free(line);
+	if ((tm->tile = read_rows(fd, &tm->size, &entrance, sym)) == NULL)
+		return ((t_point){-1, -1});
+	return (entrance);
+}

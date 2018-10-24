@@ -7,6 +7,9 @@ INCLUDES = -I libft/includes
 HEAD = grimly.h
 
 SRCS = \
+	parse_metadata.c\
+	read_tile_map.c\
+	grimly.c\
 	main.c
 OBJS = $(SRCS:.c=.o)
 
@@ -19,7 +22,7 @@ $(LIBFT):
 	make -C libft
 
 %.o: %.c $(HEAD)
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@ -g
 
 clean:
 	make clean -C libft

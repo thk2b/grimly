@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grimly.c                                           :+:      :+:    :+:   */
+/*   llist_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 20:46:15 by tkobb            ###   ########.fr       */
+/*   Created: 2018/10/21 22:24:35 by tkobb             #+#    #+#             */
+/*   Updated: 2018/10/21 23:01:24 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grimly.h"
+#include "linked_list.h"
+#include <stdlib.h>
 
-int	grimly(int fd)
+void	*llist_free(t_llist *head, t_llist_del_fn del)
 {
-	// t_point		exit;
-	t_point		entrance;
-	t_tile_map	tile_map;
-	// t_value_map	dst_map;
-	t_sym		sym;
+	t_llist_node	*node;
+	t_llist_node	*next;
 
-	if ((entrance = read_tile_map(fd, &tile_map, sym)).x < 0)
-		return (1);
-	// if ((exit = bfs(&tile_map, &dst_map, &entrance, &sym)).x < 0)
-	// 	return (1);
-	// return (render_path(&tile_map, &dst_map, &exit, sym));
-	return (0);
+	node = head->first;
+	while (node)
+	{
+		next = node->next;
+		del(node);
+		free(node);
+		node = next;
+	}
+	free(head);
+	return (NULL);
 }

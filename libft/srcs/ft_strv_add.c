@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grimly.c                                           :+:      :+:    :+:   */
+/*   ft_strv_add.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 20:46:15 by tkobb            ###   ########.fr       */
+/*   Created: 2018/10/20 22:58:31 by tkobb             #+#    #+#             */
+/*   Updated: 2018/10/21 15:27:16 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grimly.h"
+#include "libft.h"
 
-int	grimly(int fd)
+char	**ft_strv_add(const char **strv, char *str)
 {
-	// t_point		exit;
-	t_point		entrance;
-	t_tile_map	tile_map;
-	// t_value_map	dst_map;
-	t_sym		sym;
+	size_t	len;
+	char	**n;
 
-	if ((entrance = read_tile_map(fd, &tile_map, sym)).x < 0)
-		return (1);
-	// if ((exit = bfs(&tile_map, &dst_map, &entrance, &sym)).x < 0)
-	// 	return (1);
-	// return (render_path(&tile_map, &dst_map, &exit, sym));
-	return (0);
+	len = ft_strv_len(strv);
+	if ((n = (char**)malloc(sizeof(char*) * (len + 1))) == NULL)
+		return (NULL);
+	ft_memcpy(n, strv, len * sizeof(char*));
+	n[len] = str;
+	n[len + 1] = NULL;
+	return (n);
 }
