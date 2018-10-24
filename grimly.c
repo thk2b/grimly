@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 21:24:32 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 22:07:54 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	grimly(int fd)
 	// t_value_map	dst_map;
 	t_sym		sym;
 
-	if ((entrance = read_tile_map(fd, &tile_map, sym)).x < 0)
+	if (read_tile_map(fd, &tile_map, &entrance, sym))
 		return (1);
 	// if ((exit = bfs(&tile_map, &dst_map, &entrance, &sym)).x < 0)
 	// 	return (1);

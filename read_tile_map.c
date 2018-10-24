@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 18:56:54 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 22:03:57 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 22:11:41 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,26 +81,26 @@ static char	**read_rows(int fd, t_point *size, t_point *entrance, t_sym sym)
 	return (rows);
 }
 
-t_point	read_tile_map(int fd, t_tile_map *tm, t_sym sym)
+int			read_tile_map(int fd, t_tile_map *tm, t_point *entrance, t_sym sym)
 {
 	char	*line;
-	t_point	entrance = {-1, -1};
 
+	entrance->x = -1;
 	if (get_next_line(fd, &line) != 1)
-		return ((t_point){-1, -1});
+		return (1);
 	if (parse_metadata(line, &tm->size, sym))
 	{
 		free(line);
-		return ((t_point){-1, -1});
+		return (1);
 	}
 	free(line);
-	if ((tm->tile = read_rows(fd, &tm->size, &entrance, sym)) == NULL)
-		return ((t_point){-1, -1});
+	if ((tm->tile = read_rows(fd, &tm->size, entrance, sym)) == NULL)
+		return (1);
 	if (get_next_line(fd, &line) != 0)
 	{
 		free(line);
 		free_tile_map(tm);
-		return ((t_point){-1, -1});
+		return (1);
 	}
-	return (entrance);
+	return (0);
 }

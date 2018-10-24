@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 10:57:08 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 21:22:59 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 22:06:35 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef char	t_sym[5];
 
 int				grimly(int fd);
 void			free_tile_map(t_tile_map *tm);
-t_point			read_tile_map(int fd, t_tile_map* tile_map, t_sym sym);
+int				read_tile_map(int fd, t_tile_map* tile_map, t_point *entrance, t_sym sym);
 t_point			bfs(t_tile_map *tile_map, t_value_map *dst_map,
 	t_point *entrance, t_sym sym);
 int				render_path(t_tile_map *tile_map, t_value_map *val_map,
