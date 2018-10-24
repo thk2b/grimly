@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:32:03 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 16:33:05 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 16:49:08 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ t_point			bfs(t_tile_map *tile_map, t_value_map *dst_map,
 	while ((cur = queue_pop(q)))
 	{
 		while (pt_neighbors(&next, cur, &tile_map->size))
-			if (dst_map->value[PT_AT(next)] != 0 ||
-				(next_tile = tile_map->tile[PT_AT(next)]) == sym[SYM_FULL]
+			if (dst_map->value[PT_AT(next)] != 0
+				|| (next_tile = tile_map->tile[PT_AT(next)]) == sym[SYM_FULL]
 				|| next_tile == sym[SYM_ENTRANCE])
 				continue ;
 			else if (next_tile == sym[SYM_EXIT])
