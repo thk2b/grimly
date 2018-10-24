@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 18:56:54 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 22:02:08 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 22:03:38 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_point	read_tile_map(int fd, t_tile_map *tm, t_sym sym)
 	free(line);
 	if ((tm->tile = read_rows(fd, &tm->size, &entrance, sym)) == NULL)
 		return ((t_point){-1, -1});
-	if (get_next_line(fd, &line) && *line != '\n')
+	if (get_next_line(fd, &line) != 0)
 	{
 		free(line);
 		free_tile_map(tm);
