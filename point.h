@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:11:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 10:15:54 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 10:56:43 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_point
 	int	y;
 }				t_point;
 
-int				pt_neighbors(t_point *pt, t_point *dst);
+int				pt_neighbors(t_point *pt, t_point *dst, t_point *bounds);
 t_point			*pt_dup(t_point p);
 
 #endif

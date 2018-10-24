@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 16:45:10 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 10:53:53 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 11:07:44 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,27 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int		pt_neighbors(t_point *dst, t_point *pt)
+static int	out_of_bounds(int n, int max)
+{
+	return (n < 0 || n >= max);
+}
+
+int		pt_neighbors(t_point *dst, t_point *pt, t_point *bounds)
 {
 	static int		i = 0;
 	static t_point	offset[4] = {{0, -1}, {-1, 0}, {0, 1}, {1, 0}};
+	int				nx;
+	int				ny;
 
-	dst->x = offset[i].x + pt->x;
-	dst->y = offset[i].y + pt->y;
-	i++;
 	if (i == 4)
-	{
-		i = 0;
-		return (0);
-	}
+		return ((i = 0));
+	nx = offset[i].x + pt->x;
+	ny = offset[i].y + pt->y;
+	i++;
+	if (out_of_bounds(nx, bounds->x) || out_of_bounds(ny, bounds->y))
+		return (pt_neighbors(dst, pt, bounds));
+	dst->x = nx;
+	dst->y = ny;
 	return (1);
 }
 
