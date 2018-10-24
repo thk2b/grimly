@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grimly.c                                           :+:      :+:    :+:   */
+/*   value_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 10:54:09 by tkobb            ###   ########.fr       */
+/*   Created: 2018/10/24 10:33:29 by tkobb             #+#    #+#             */
+/*   Updated: 2018/10/24 10:53:24 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grimly.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	grimly(int fd)
+int		value_map_new(t_value_map *vm, t_point *size)
 {
-	t_point		exit;
-	t_point		entrance;
-	t_tile_map	tile_map;
-	t_value_map	dst_map;
-	t_sym		sym;
+	int			y;
 
-	if (read_tile_map(fd, &tile_map, &entrance, sym))
-		return (1);
-	if ((exit = bfs(&tile_map, &dst_map, &entrance, sym)).x < 0)
-		return (1);
-	// return (render_path(&tile_map, &dst_map, &exit, sym));
-	tile_map_free(&tile_map);
+	vm->size.x = size->x;
+	vm->size.y = size->y;
+	y = 0;
+	MCK(vm->value = (int**)malloc(sizeof(int*) * size->y), 1);
+	while (y < size->y)
+		MCK(vm->value[y++] = (int*)ft_memalloc(sizeof(int) * size->x), 1);
 	return (0);
+}
+
+void	value_map_free(t_value_map *vm)
+{
+	int	y;
+
+	y = 0;
+	while (y < vm->size.y)
+		free(vm->value[y++]);
+	free(vm->value);
 }

@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 18:56:54 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 22:11:41 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 10:52:19 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int			read_tile_map(int fd, t_tile_map *tm, t_point *entrance, t_sym sym)
 	if (get_next_line(fd, &line) != 0)
 	{
 		free(line);
-		free_tile_map(tm);
+		tile_map_free(tm);
 		return (1);
 	}
 	return (0);

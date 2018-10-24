@@ -6,14 +6,14 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 21:22:17 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 21:35:56 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 10:45:20 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grimly.h"
 #include <stdlib.h>
 
-void	free_tile_map(t_tile_map *tm)
+void	tile_map_free(t_tile_map *tm)
 {
 	int	y;
 

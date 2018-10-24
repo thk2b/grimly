@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grimly.c                                           :+:      :+:    :+:   */
+/*   point.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 10:54:09 by tkobb            ###   ########.fr       */
+/*   Created: 2018/10/24 10:11:57 by tkobb             #+#    #+#             */
+/*   Updated: 2018/10/24 10:15:54 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grimly.h"
+#ifndef POINT_H
+# define POINT_H
+# define PTP_AT(pt)pt->y][pt->x
+# define PT_AT(pt)pt.y][pt.x
 
-int	grimly(int fd)
+typedef struct	s_point
 {
-	t_point		exit;
-	t_point		entrance;
-	t_tile_map	tile_map;
-	t_value_map	dst_map;
-	t_sym		sym;
+	int	x;
+	int	y;
+}				t_point;
 
-	if (read_tile_map(fd, &tile_map, &entrance, sym))
-		return (1);
-	if ((exit = bfs(&tile_map, &dst_map, &entrance, sym)).x < 0)
-		return (1);
-	// return (render_path(&tile_map, &dst_map, &exit, sym));
-	tile_map_free(&tile_map);
-	return (0);
-}
+int				pt_neighbors(t_point *pt, t_point *dst);
+t_point			*pt_dup(t_point p);
+
+#endif

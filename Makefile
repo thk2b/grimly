@@ -8,8 +8,11 @@ HEAD = grimly.h
 
 SRCS = \
 	parse_metadata.c\
-	free_tile_map.c\
+	tile_map_free.c\
 	read_tile_map.c\
+	value_map.c\
+	point.c\
+	bfs.c\
 	grimly.c\
 	main.c
 OBJS = $(SRCS:.c=.o)
