@@ -8,6 +8,7 @@ HEAD = grimly.h
 
 SRCS = \
 	parse_metadata.c\
+	free_tile_map.c\
 	read_tile_map.c\
 	grimly.c\
 	main.c

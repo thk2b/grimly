@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 18:56:54 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 21:03:55 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 21:32:13 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,17 @@ static int	find_entrance(int y, char *row, t_point *entrance, t_sym sym)
 	return (0);
 }
 
+static void	*free_rows(char **rows, int y)
+{
+	int j;
+
+	j = 0;
+	while (j < y)
+		free(rows[j++]);
+	free(rows);
+	return (NULL);
+}
+
 static char	**read_rows(int fd, t_point *size, t_point *entrance, t_sym sym)
 {
 	int		y;
@@ -56,17 +67,17 @@ static char	**read_rows(int fd, t_point *size, t_point *entrance, t_sym sym)
 	y = 0;
 	while (y < size->y)
 		if ((get_next_line(fd, rows + y)) != 1)
-			return (NULL);
+			return free_rows(rows, y);
 		else if (validate_row(rows[y], size->x, sym))
-			return (NULL);
+			return free_rows(rows, y);
 		else if(find_entrance(y, rows[y], entrance, sym))
-			return (NULL);
+			return free_rows(rows, y);
 		else
 			y++;
 	if (y != size->y)
-		return (NULL);
+		return free_rows(rows, y);
 	if (entrance->x < 0)
-		return (NULL);
+		return free_rows(rows, y);
 	return (rows);
 }
 
