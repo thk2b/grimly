@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 23:36:39 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 00:01:27 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 09:30:05 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,31 @@ static void	test1(void)
 	free(strv);
 }
 
+static void	test2(void)
+{
+	char	**strv;
+	t_pq	*pq;
+
+	pq = NULL;
+	strv = ft_strsplit("abc def ghi jkl mno", ' ');
+	pq_add(&pq, strv[0], 0, 1);
+	pq_add(&pq, strv[1], 0, 1);
+	pq_add(&pq, strv[2], 0, 1);
+	pq_add(&pq, strv[3], 0, 1);
+	assert(pq_pop(&pq, del) == strv[0]);
+	assert(pq_get(pq) == strv[1]);
+	assert(pq_pop(&pq, del) == strv[1]);
+	assert(pq_get(pq) == strv[2]);
+	assert(pq_pop(&pq, del) == strv[2]);
+	assert(pq_pop(&pq, del) == strv[3]);
+	assert(pq_pop(&pq, del) == NULL);
+	pq_free(pq, del);
+	free(strv);
+}
+
 void		test_pq(void)
 {
 	test0();
 	test1();
+	test2();
 }

@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 23:04:12 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 11:37:48 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 13:27:56 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	default_del(void *data)
 	free(data);
 }
 
-void	pq_free(t_pq *pq, t_pq_del_fn del)
+void		pq_free(t_pq *pq, t_pq_del_fn del)
 {
 	t_pq	*cur;
 	t_pq	*next;

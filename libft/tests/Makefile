@@ -5,6 +5,7 @@ LIBFT_SRCS = ../srcs
 SRCS =\
 	test_llist.c\
 	test_hm.c\
+	test_queue.c\
 	test_pq.c\
 	main.c
 OBJS = $(SRCS:.c=.o)
@@ -22,7 +23,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(FLAGS) $(INCLUDES) $(LIBFT) $(OBJS) -o $(NAME) -g
 
 %.o: %.c
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@ -g
 
 clean:
 	rm -f $(OBJS)

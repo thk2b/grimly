@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/21 23:02:17 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/22 23:36:11 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 12:47:48 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	test_llist(void);
 void	test_hm(void);
+void	test_queue(void);
 void	test_pq(void);
 
 #endif

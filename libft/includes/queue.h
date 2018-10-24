@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 12:41:49 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 13:07:52 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 13:27:42 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ t_queue			*queue_new(void);
 void			queue_free(t_queue *q, t_queue_del_fn del);
 int				queue_add(t_queue **q, void *data);
 void			*queue_pop(t_queue *q);
-
 
 #endif
