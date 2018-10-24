@@ -1,3 +1,4 @@
 mapgen.rb
 *.o
 grimly.vscode/
+.vscode
