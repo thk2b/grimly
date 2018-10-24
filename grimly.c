@@ -6,26 +6,15 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 15:14:31 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 16:04:49 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grimly.h"
 #include "libft.h"
 #include <stdlib.h>
-#include <printf.h>
 
-void	render_value_map(t_value_map *vm)
-{
-	for (int y = 0; y < vm->size.y; y++)
-	{
-		for (int x = 0; x < vm->size.x; x++)
-			printf(" %2d ", vm->value[y][x]);
-		printf("\n");
-	}
-}
-
-int	grimly(int fd)
+int		grimly(int fd)
 {
 	t_point		exit;
 	t_point		*entrance;

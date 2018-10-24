@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 13:42:15 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 15:14:22 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 16:06:23 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ int				render_path(t_tile_map *tile_map, t_value_map *val_map,
 	t_point *exit, t_sym sym)
 {
 	t_point	cur;
-	t_point	next = {0, 0};
+	t_point	next;
 	int		steps;
 
+	next.x = 0;
+	next.y = 0;
 	ft_memcpy(&cur, exit, sizeof(t_point));
 	steps = 0;
 	while (++steps)

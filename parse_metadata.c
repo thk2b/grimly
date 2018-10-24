@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 19:27:19 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 14:19:20 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 16:05:42 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	parse_symbols(char *line, t_sym sym)
 	size_t	len;
 	int		i;
 
-	if((len = ft_strlen(line)) < 9)
+	if ((len = ft_strlen(line)) < 9)
 		return (1);
 	if (!ft_isdigit(line[len - 6]))
 		return (1);
@@ -47,9 +47,8 @@ static int	parse_size(char *line, t_point *size)
 	return (0);
 }
 
-int	parse_metadata(char *line, t_point *size, t_sym sym)
+int			parse_metadata(char *line, t_point *size, t_sym sym)
 {
-
 	if ((parse_symbols(line, sym)))
 		return (1);
 	if ((parse_size(line, size)))

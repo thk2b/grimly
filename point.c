@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 16:45:10 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 14:29:10 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 16:09:19 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	out_of_bounds(int n, int max)
 	return (n < 0 || n >= max);
 }
 
-int		pt_neighbors(t_point *dst, t_point *pt, t_point *bounds)
+int			pt_neighbors(t_point *dst, t_point *pt, t_point *bounds)
 {
 	static int		i = 0;
 	static t_point	offset[4] = {{0, -1}, {-1, 0}, {1, 0}, {0, 1}};
@@ -38,7 +38,7 @@ int		pt_neighbors(t_point *dst, t_point *pt, t_point *bounds)
 	return (1);
 }
 
-t_point	*pt_dup(t_point p)
+t_point		*pt_dup(t_point p)
 {
 	t_point	*dup;
 

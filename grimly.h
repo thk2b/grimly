@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 10:57:08 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 15:02:31 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 16:08:36 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ enum			e_syms
 };
 typedef char	t_sym[5];
 
-
 int				grimly(int fd);
 void			tile_map_free(t_tile_map *tm);
-int				read_tile_map(int fd, t_tile_map* tile_map, t_point *entrance, t_sym sym);
+int				read_tile_map(int fd, t_tile_map *tile_map,
+	t_point *entrance, t_sym sym);
 int				print_tile_map(t_tile_map *tm, int steps);
 int				value_map_new(t_value_map *vm, t_point *size);
 void			value_map_free(t_value_map *vm);

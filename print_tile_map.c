@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 14:14:29 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 15:03:41 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 16:05:23 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	print_tile_map(t_tile_map *tm, int steps)
 {
-	int y ;
+	int y;
 
 	y = 0;
 	while (y < tm->size.y)
