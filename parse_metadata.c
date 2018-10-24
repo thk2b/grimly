@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 19:27:19 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 20:55:29 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 22:22:01 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ static int	parse_size(char *line, t_point *size)
 	if (*line != 'x')
 		return (1);
 	size->x = ft_atoi(++line);
+	if (size->x == 0 || size->y == 0)
+		return (1);
+	if (size->x > MAX_MAP || size->y > MAX_MAP)
+		return (1);
 	return (0);
 }
 

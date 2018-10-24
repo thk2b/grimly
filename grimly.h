@@ -6,12 +6,13 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 10:57:08 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/23 22:06:35 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/23 22:18:52 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRIMLY_H
 # define GRIMLY_H
+# define MAX_MAP 1000000000
 
 typedef struct	s_point
 {
