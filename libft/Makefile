@@ -93,7 +93,7 @@ SRCS = $(addprefix $(SRCDIR)/,\
 OBJS = $(SRCS:.c=.o)
 
 %.o: %.c
-	gcc -I$(INCLUDEDIR) $(FLAGS) -c $< -o $@
+	gcc -I$(INCLUDEDIR) $(FLAGS) -c $< -o $@ -g
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
