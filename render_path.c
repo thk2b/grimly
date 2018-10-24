@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 13:42:15 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 15:04:51 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/24 15:14:22 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int		is_best_tile(char tile, int value, int min_value, t_sym sym)
 {
-	if (tile == sym[SYM_FULL] || tile == sym[SYM_PATH])
+	if (tile == sym[SYM_FULL] || tile == sym[SYM_PATH] || tile == sym[SYM_EXIT])
 		return (0);
 	if (min_value == -1 || tile == sym[SYM_ENTRANCE])
 		return (1);
