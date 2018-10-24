@@ -4,7 +4,14 @@ FLAGS = -Wall -Wextra -Werror
 
 SRCDIR = srcs
 INCLUDEDIR = includes
+
+LINKED_LIST_SRCS = $(addprefix linked_list/, llist_new.c llist_free.c llist_push.c llist_shift.c llist_find.c llist_remove.c)
+HASH_MAP_SRCS = $(addprefix hash_map/, hash_ascii.c hm_new.c hm_find.c hm_free.c hm_insert.c hm_new.c hm_remove.c)
+PRIORITY_QUEUE_SRCS = $(addprefix priority_queue/, pq_new.c pq_free.c pq_add.c pq_get.c pq_pop.c)
 SRCS = $(addprefix $(SRCDIR)/,\
+	$(LINKED_LIST_SRCS)\
+	$(HASH_MAP_SRCS)\
+	$(PRIORITY_QUEUE_SRCS)\
 	ft_memset.c\
 	ft_bzero.c\
 	ft_memcpy.c\
@@ -28,6 +35,7 @@ SRCS = $(addprefix $(SRCDIR)/,\
 	ft_atoi.c\
 	ft_strtrim.c\
 	ft_strsplit.c\
+	ft_strsplit_escape.c\
 	ft_isalpha.c\
 	ft_isdigit.c\
 	ft_isalnum.c\
@@ -76,6 +84,10 @@ SRCS = $(addprefix $(SRCDIR)/,\
 	ft_btree_backinorder.c\
 	ft_btree_backpostorder.c\
 	get_next_line.c\
+	ft_putstrv.c\
+	ft_strv_len.c\
+	ft_strv_add.c\
+	ft_strv_remove.c\
 )
 
 OBJS = $(SRCS:.c=.o)
