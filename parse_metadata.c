@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 19:27:19 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 16:57:51 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/25 12:42:44 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	parse_symbols(char *line, t_sym sym)
 		sym[i] = line[len - 5 + i];
 		i++;
 	}
-	line[len - 5] = '\0';
+	// line[len - 5] = '\0';
 	return (0);
 }
 
@@ -42,6 +42,10 @@ static int	parse_size(char *line, t_point *size)
 	if (*line != 'x')
 		return (1);
 	size->x = ft_atoi(++line);
+	while (ft_isdigit(*line))
+		line++;
+	if (ft_strlen(line) != 5)
+		return (1);
 	if (size->x <= 0 || size->y <= 0)
 		return (1);
 	if ((squares = size->x * size->y) > MAX_MAP
