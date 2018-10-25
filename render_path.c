@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 13:42:15 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/25 11:33:36 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/25 12:24:24 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ int				render_path(t_tile_map *tile_map, t_value_map *val_map,
 		tile_map->tile[PT_AT(next)] = sym[SYM_PATH];
 		cur = next;
 	}
-	return (print_tile_map(tile_map, steps, sym));
+	return (print_tile_map(tile_map, steps - 1, sym));
 }
