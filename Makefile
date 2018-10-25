@@ -28,7 +28,7 @@ $(LIBFT):
 	make -C libft
 
 %.o: %.c $(HEAD)
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@ -g
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	make clean -C libft
