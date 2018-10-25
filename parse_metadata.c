@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 19:27:19 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/25 12:42:44 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/25 14:07:27 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	parse_symbols(char *line, t_sym sym)
 		sym[i] = line[len - 5 + i];
 		i++;
 	}
-	// line[len - 5] = '\0';
 	return (0);
 }
 

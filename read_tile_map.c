@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 18:56:54 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 16:07:55 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/25 14:06:53 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static int	validate_row(char *row, int width, t_sym sym)
 
 	i = 0;
 	while (row[i])
-		if (ft_memchr((void*)sym, row[i++], 5) == NULL)
+		if (ft_memchr((void*)sym, row[i], 5) == NULL || row[i] == sym[SYM_PATH])
 			return (1);
+		else
+			i++;
 	if (i != width)
 		return (1);
 	return (0);
