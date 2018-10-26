@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 09:32:03 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 16:49:08 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/25 19:44:33 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ t_point			bfs(t_tile_map *tile_map, t_value_map *dst_map,
 	while ((cur = queue_pop(q)))
 	{
 		while (pt_neighbors(&next, cur, &tile_map->size))
-			if (dst_map->value[PT_AT(next)] != 0
-				|| (next_tile = tile_map->tile[PT_AT(next)]) == sym[SYM_FULL]
+			if ((next_tile = tile_map->tile[PT_AT(next)]) == sym[SYM_EXIT])
+				return (handle_exit_tile(q, cur, next));
+			else if (dst_map->value[PT_AT(next)] != 0
+				|| next_tile == sym[SYM_FULL]
 				|| next_tile == sym[SYM_ENTRANCE])
 				continue ;
-			else if (next_tile == sym[SYM_EXIT])
-				return (handle_exit_tile(q, cur, next));
 			else if (handle_empty_tile(q, dst_map, &next,
 				dst_map->value[PTP_AT(cur)] + 1))
 				return ((t_point){-1, -1});
