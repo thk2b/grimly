@@ -2,7 +2,7 @@ NAME = grimly
 LIBFT = libft/libft.a
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 INCLUDES = -I libft/includes
 HEAD = grimly.h
 

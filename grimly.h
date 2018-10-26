@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 10:57:08 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/25 11:33:07 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/26 16:14:28 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct	s_tile_map
 typedef	struct	s_value_map
 {
 	t_point	size;
-	int		**value;
+	t_point	**value;
 }				t_value_map;
 
 enum			e_syms
