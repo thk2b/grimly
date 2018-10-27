@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 16:26:57 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/24 16:04:49 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/26 21:44:17 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ int		grimly(int fd)
 	if (read_tile_map(fd, &tile_map, entrance, sym))
 		return (1);
 	if ((exit = bfs(&tile_map, &dst_map, entrance, sym)).x < 0)
+	{
+		tile_map_free(&tile_map);
+		value_map_free(&dst_map);
 		return (1);
+	}
 	render_path(&tile_map, &dst_map, &exit, sym);
 	tile_map_free(&tile_map);
 	value_map_free(&dst_map);
