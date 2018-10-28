@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 10:57:08 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/26 16:14:28 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/28 11:23:11 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef	struct	s_value_map
 {
 	t_point	size;
 	t_point	**value;
-}				t_value_map;
+}				t_parent_map;
 
 enum			e_syms
 {
@@ -38,11 +38,11 @@ void			tile_map_free(t_tile_map *tm);
 int				read_tile_map(int fd, t_tile_map *tile_map,
 	t_point *entrance, t_sym sym);
 int				print_tile_map(t_tile_map *tm, int steps, t_sym sym);
-int				value_map_new(t_value_map *vm, t_point *size);
-void			value_map_free(t_value_map *vm);
-t_point			bfs(t_tile_map *tile_map, t_value_map *dst_map,
+int				value_map_new(t_parent_map *vm, t_point *size);
+void			value_map_free(t_parent_map *vm);
+t_point			bfs(t_tile_map *tile_map, t_parent_map *parent_map,
 	t_point *entrance, t_sym sym);
-int				render_path(t_tile_map *tile_map, t_value_map *val_map,
+int				render_path(t_tile_map *tile_map, t_parent_map *parent_map,
 	t_point *exit, t_sym sym);
 
 #endif
