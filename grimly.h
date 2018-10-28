@@ -6,7 +6,7 @@
 /*   By: tkobb <tkobb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 10:57:08 by tkobb             #+#    #+#             */
-/*   Updated: 2018/10/28 11:23:11 by tkobb            ###   ########.fr       */
+/*   Updated: 2018/10/28 11:27:27 by tkobb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_tile_map
 	char	**tile;
 }				t_tile_map;
 
-typedef	struct	s_value_map
+typedef	struct	s_parent_map
 {
 	t_point	size;
 	t_point	**value;
